@@ -24,7 +24,16 @@ function Page({}: any) {
     }
   }
 
-  async function loginWithGithub() {}
+  async function loginWithGithub() {
+    setIsLoading(true);
+    try {
+      await signIn("github");
+    } catch (err) {
+      toast.error("Somthing went wrong with your login github");
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <>
@@ -92,13 +101,13 @@ function Page({}: any) {
               isLoading={isLoading}
               type="button"
               className="max-w-sm mx-auto min-w-full hover:bg-slate-200 transition-all duration-300 hover:text-red-800"
+              onClick={loginWithGithub}
             >
               <Image
                 src="/github.svg"
                 alt="google logo"
                 height={25}
                 width={25}
-                onClick={loginWithGithub}
                 className="mr-[0.35rem]"
               />{" "}
               <p className="font-bold">GitHub</p>

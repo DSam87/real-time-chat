@@ -20,8 +20,8 @@ function getGoogleCredentials() {
 }
 
 function getGithubCredentials() {
-  const clientId = process.env.GITHUB_ID;
-  const clientSecret = process.env.GITHUB_SECRET;
+  const clientId = process.env.GITHUB_CLIENT_ID;
+  const clientSecret = process.env.GITHUB_CLIENT_SECRET;
   if (!clientId || clientId.length === 0) {
     throw new Error("Missing GITHUB_ID");
   }
